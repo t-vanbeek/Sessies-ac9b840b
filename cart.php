@@ -18,16 +18,21 @@ session_start();
         <h1>Skeelers <small>(#3)</small></h1>
 
         <form method="POST">
-            <input type="number" min="1" name="nummer" max="3" id="nummer" placeholder="Voer een nummer in" required size="1" />
-            <input type="submit" value="opslaan"/>
+            <input type="number" min="1" max="3" name="nummer" id="nummer" placeholder="Voer een nummer in" required size="1" />
+            <input type="submit" name="opslaan" id="opslaan" value="opslaan"/>
         </form>
 
         <?php
-        if (isset($_POST["nummer"])) {
-            $_SESSION["nummer"] = $_POST["nummer"];
-            
-            echo $_SESSION["nummer"];
-        }
+
+if(isset($_POST["opslaan"])){
+    if(isset($_POST["nummer"]) < 1 || isset($_POST["nummer"]) > 3){
+    echo("Kies een getal tussen de 1 en de 3!");
+        } else { setcookie("nummertje", $_POST["nummer"]); }
+        header("refresh: 0 ");
+    }
+    if (isset($_COOKIE["nummertje"])){
+        echo("Je hebt") . " " . "#" .$_COOKIE["nummertje"]. " " . "gekozen";
+    }
         ?>
         
 
