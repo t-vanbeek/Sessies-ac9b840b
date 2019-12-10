@@ -25,7 +25,7 @@ session_start();
         <?php
 
 if(isset($_POST["opslaan"])){
-    if(isset($_POST["nummer"]) < 1 || isset($_POST["nummer"]) > 3){
+    if($_POST["nummer"] < 1 || $_POST["nummer"] > 3){
     echo("Kies een getal tussen de 1 en de 3!");
         } else { setcookie("nummertje", $_POST["nummer"]); }
         header("refresh: 0 ");
